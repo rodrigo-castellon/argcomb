@@ -57,12 +57,6 @@ class ArgCombiner(object):
             if arg == "-n":  # Similar to what `make -n` does
                 pretend = True
                 continue
-            m = re.fullmatch(r"(@\w+)=(.*)$", arg)
-            if m:
-                var, value = m.group(1), m.group(2)
-                self.init_env[var] = parse_value(value)
-                continue
-            self.extra_args.append(arg)
 
         self.pretend = pretend
 
